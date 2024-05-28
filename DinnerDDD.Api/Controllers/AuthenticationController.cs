@@ -1,8 +1,8 @@
 ﻿using DinnerDDD.Application.Authentication.Commands.Register;
-using DinnerDDD.Application.Authentication.Common;
 using DinnerDDD.Application.Authentication.Queries.Login;
 using DinnerDDD.Contracts.Authentication;
 using DinnerDDD.Domain.Common.Errors;
+using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,20 +12,22 @@ namespace DinnerDDD.Api.Controllers
     public class AuthenticationController : ApiController
     {
         private readonly ISender _mediator;
+        private readonly IMapper _mapper;
 
-        public AuthenticationController(IMediator mediator)
+        public AuthenticationController(IMediator mediator, IMapper mapper)
         {
             _mediator = mediator;
+            _mapper = mapper;
         }
 
         [HttpPost("signup")]
         public async Task<IActionResult> SignUp(SignUpRequest request)
         {
-            var command = new RegisterCommand(request.FirstName, request.LastName, request.Email, request.Password);
+            var command = _mapper.Map<RegisterCommand>(request);
             var authResult = await _mediator.Send(command);
 
             return authResult.Match(
-                authResult => Ok(MapAuthResult(authResult)),
+                authResult => Ok(_mapper.Map<AuthenticationReponse>(authResult)),
                 errors => Problem(errors));
 
         }
@@ -34,7 +36,7 @@ namespace DinnerDDD.Api.Controllers
         [HttpPost("signin")]
         public async Task<IActionResult> SignIn(SignInRequest request)
         {
-            var query = new LoginQuery(request.Email, request.Password);
+            var query = _mapper.Map<LoginQuery>(request);
             var authResult = await _mediator.Send(query);
 
             if (authResult.IsError && authResult.FirstError == Errors.Authentication.InvalidCredential)
@@ -45,20 +47,8 @@ namespace DinnerDDD.Api.Controllers
             }
 
             return authResult.Match(
-                authResult => Ok(MapAuthResult(authResult)),
+                authResult => Ok(_mapper.Map<AuthenticationReponse>(authResult)),
                 errors => Problem(errors));
         }
-
-        private static AuthenticationReponse MapAuthResult(AuthenticationResult authResult)
-        {
-            return new AuthenticationReponse(
-                authResult.User.Id,
-                authResult.User.FirstName,
-                authResult.User.LastName,
-                authResult.User.Email,
-                authResult.Token
-                );
-        }
-
     }
 }
