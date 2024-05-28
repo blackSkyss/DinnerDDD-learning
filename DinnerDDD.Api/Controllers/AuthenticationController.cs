@@ -1,8 +1,9 @@
-﻿using DinnerDDD.Application.Common.Errors;
-using DinnerDDD.Application.Services.Authentication;
+﻿using DinnerDDD.Application.Authentication.Commands.Register;
+using DinnerDDD.Application.Authentication.Common;
+using DinnerDDD.Application.Authentication.Queries.Login;
 using DinnerDDD.Contracts.Authentication;
 using DinnerDDD.Domain.Common.Errors;
-using ErrorOr;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DinnerDDD.Api.Controllers
@@ -10,21 +11,18 @@ namespace DinnerDDD.Api.Controllers
     [Route("auth")]
     public class AuthenticationController : ApiController
     {
-        private readonly IAuthenticationService _authenticationService;
+        private readonly ISender _mediator;
 
-        public AuthenticationController(IAuthenticationService authenticationService)
+        public AuthenticationController(IMediator mediator)
         {
-            _authenticationService = authenticationService;
+            _mediator = mediator;
         }
 
         [HttpPost("signup")]
-        public IActionResult SignUp(SignUpRequest request)
+        public async Task<IActionResult> SignUp(SignUpRequest request)
         {
-            ErrorOr<AuthenticationResult> authResult = _authenticationService.SignUp(
-                request.FirstName,
-                request.LastName,
-                request.Email,
-                request.Password);
+            var command = new RegisterCommand(request.FirstName, request.LastName, request.Email, request.Password);
+            var authResult = await _mediator.Send(command);
 
             return authResult.Match(
                 authResult => Ok(MapAuthResult(authResult)),
@@ -34,9 +32,10 @@ namespace DinnerDDD.Api.Controllers
 
 
         [HttpPost("signin")]
-        public IActionResult SignIn(SignInRequest request)
+        public async Task<IActionResult> SignIn(SignInRequest request)
         {
-            var authResult = _authenticationService.SignIn(request.Email, request.Password);
+            var query = new LoginQuery(request.Email, request.Password);
+            var authResult = await _mediator.Send(query);
 
             if (authResult.IsError && authResult.FirstError == Errors.Authentication.InvalidCredential)
             {
