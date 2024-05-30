@@ -21,6 +21,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication", "Authentic
 		Signup.http = Signup.http
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dinners", "Dinners", "{24D09ED9-51F3-4F5A-85D3-DC2389AF792E}"
+	ProjectSection(SolutionItems) = preProject
+		ListDinners.http = ListDinners.http
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +58,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1209FA42-D2C4-4431-987B-007D182209F7} = {3B55C6DF-B88E-4F41-A58D-1ED16BC38104}
+		{24D09ED9-51F3-4F5A-85D3-DC2389AF792E} = {3B55C6DF-B88E-4F41-A58D-1ED16BC38104}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {64B8AD7B-7679-4B0B-885B-8230DAD479BA}
