@@ -1,4 +1,4 @@
-﻿using DinnerDDD.Domain.Entities;
+﻿using DinnerDDD.Domain.User;
 
 namespace DinnerDDD.Application.Authentication.Common
 {

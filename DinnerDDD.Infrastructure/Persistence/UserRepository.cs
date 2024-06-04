@@ -1,5 +1,5 @@
 ﻿using DinnerDDD.Application.Common.Interfaces.Persistence;
-using DinnerDDD.Domain.Entities;
+using DinnerDDD.Domain.User;
 
 namespace DinnerDDD.Infrastructure.Persistence
 {

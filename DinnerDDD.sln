@@ -26,6 +26,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dinners", "Dinners", "{24D0
 		ListDinners.http = ListDinners.http
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{AFEA31BE-E44D-4E48-8EC1-1F7A7AAF1F34}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DomainModels", "DomainModels", "{FE2A0CE1-A79C-45A2-BBB2-07FB6E90D60E}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\LEGION\Downloads\425ffc6b82e41610369e51e9d2827e4c-99f48a8927c2652c6c68aa89ac78d52f1ffdf3e2\Aggregates.Bill.md = C:\Users\LEGION\Downloads\425ffc6b82e41610369e51e9d2827e4c-99f48a8927c2652c6c68aa89ac78d52f1ffdf3e2\Aggregates.Bill.md
+		C:\Users\LEGION\Downloads\425ffc6b82e41610369e51e9d2827e4c-99f48a8927c2652c6c68aa89ac78d52f1ffdf3e2\Aggregates.Dinner.md = C:\Users\LEGION\Downloads\425ffc6b82e41610369e51e9d2827e4c-99f48a8927c2652c6c68aa89ac78d52f1ffdf3e2\Aggregates.Dinner.md
+		C:\Users\LEGION\Downloads\425ffc6b82e41610369e51e9d2827e4c-99f48a8927c2652c6c68aa89ac78d52f1ffdf3e2\Aggregates.Guest.md = C:\Users\LEGION\Downloads\425ffc6b82e41610369e51e9d2827e4c-99f48a8927c2652c6c68aa89ac78d52f1ffdf3e2\Aggregates.Guest.md
+		C:\Users\LEGION\Downloads\425ffc6b82e41610369e51e9d2827e4c-99f48a8927c2652c6c68aa89ac78d52f1ffdf3e2\Aggregates.Host.md = C:\Users\LEGION\Downloads\425ffc6b82e41610369e51e9d2827e4c-99f48a8927c2652c6c68aa89ac78d52f1ffdf3e2\Aggregates.Host.md
+		C:\Users\LEGION\Downloads\425ffc6b82e41610369e51e9d2827e4c-99f48a8927c2652c6c68aa89ac78d52f1ffdf3e2\Aggregates.Menu.md = C:\Users\LEGION\Downloads\425ffc6b82e41610369e51e9d2827e4c-99f48a8927c2652c6c68aa89ac78d52f1ffdf3e2\Aggregates.Menu.md
+		C:\Users\LEGION\Downloads\425ffc6b82e41610369e51e9d2827e4c-99f48a8927c2652c6c68aa89ac78d52f1ffdf3e2\Aggregates.MenuReview.md = C:\Users\LEGION\Downloads\425ffc6b82e41610369e51e9d2827e4c-99f48a8927c2652c6c68aa89ac78d52f1ffdf3e2\Aggregates.MenuReview.md
+		C:\Users\LEGION\Downloads\425ffc6b82e41610369e51e9d2827e4c-99f48a8927c2652c6c68aa89ac78d52f1ffdf3e2\Aggregates.User.md = C:\Users\LEGION\Downloads\425ffc6b82e41610369e51e9d2827e4c-99f48a8927c2652c6c68aa89ac78d52f1ffdf3e2\Aggregates.User.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Menus", "Menus", "{7BBE0C50-3EFC-4D36-A87E-653DD49C1F13}"
+	ProjectSection(SolutionItems) = preProject
+		CreateMenu.http = CreateMenu.http
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +77,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1209FA42-D2C4-4431-987B-007D182209F7} = {3B55C6DF-B88E-4F41-A58D-1ED16BC38104}
 		{24D09ED9-51F3-4F5A-85D3-DC2389AF792E} = {3B55C6DF-B88E-4F41-A58D-1ED16BC38104}
+		{FE2A0CE1-A79C-45A2-BBB2-07FB6E90D60E} = {AFEA31BE-E44D-4E48-8EC1-1F7A7AAF1F34}
+		{7BBE0C50-3EFC-4D36-A87E-653DD49C1F13} = {3B55C6DF-B88E-4F41-A58D-1ED16BC38104}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {64B8AD7B-7679-4B0B-885B-8230DAD479BA}

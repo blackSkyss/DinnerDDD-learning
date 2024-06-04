@@ -1,6 +1,6 @@
 ﻿using DinnerDDD.Application.Common.Interfaces.Authentication;
 using DinnerDDD.Application.Common.Interfaces.Services;
-using DinnerDDD.Domain.Entities;
+using DinnerDDD.Domain.User;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;

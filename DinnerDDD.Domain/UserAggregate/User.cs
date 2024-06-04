@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DinnerDDD.Domain.Entities
+﻿namespace DinnerDDD.Domain.User
 {
     public class User
     {

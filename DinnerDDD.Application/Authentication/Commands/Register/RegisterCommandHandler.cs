@@ -2,7 +2,7 @@
 using DinnerDDD.Application.Common.Interfaces.Authentication;
 using DinnerDDD.Application.Common.Interfaces.Persistence;
 using DinnerDDD.Domain.Common.Errors;
-using DinnerDDD.Domain.Entities;
+using DinnerDDD.Domain.User;
 using ErrorOr;
 using MediatR;
 
