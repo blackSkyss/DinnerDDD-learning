@@ -11,7 +11,7 @@ namespace DinnerDDD.Domain.Menu.ValueObjects
             Value = value;
         }
 
-        public static MenuId CreateUnique()
+        public static MenuId Create()
         {
             return new(Guid.NewGuid());
         }

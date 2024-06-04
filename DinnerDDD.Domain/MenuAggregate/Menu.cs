@@ -2,8 +2,8 @@
 using DinnerDDD.Domain.Common.ValueObjects;
 using DinnerDDD.Domain.Dinner.ValueObjects;
 using DinnerDDD.Domain.Host.ValueObjects;
-using DinnerDDD.Domain.Menu.Entities;
 using DinnerDDD.Domain.Menu.ValueObjects;
+using DinnerDDD.Domain.MenuAggregate.Entities;
 using DinnerDDD.Domain.MenuReview.ValueObjects;
 
 namespace DinnerDDD.Domain.Menu
@@ -47,7 +47,7 @@ namespace DinnerDDD.Domain.Menu
             string description,
             List<MenuSection> sections)
         {
-            return new(MenuId.CreateUnique(),
+            return new(MenuId.Create(),
                        hostId,
                        name,
                        description,

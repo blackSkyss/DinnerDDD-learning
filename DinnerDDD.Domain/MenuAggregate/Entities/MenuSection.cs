@@ -1,7 +1,7 @@
 ﻿using DinnerDDD.Domain.Common.Models;
 using DinnerDDD.Domain.Menu.ValueObjects;
 
-namespace DinnerDDD.Domain.Menu.Entities
+namespace DinnerDDD.Domain.MenuAggregate.Entities
 {
     public sealed class MenuSection : Entity<MenuSectionId>
     {
@@ -20,7 +20,7 @@ namespace DinnerDDD.Domain.Menu.Entities
 
         public static MenuSection Create(string name, string description, List<MenuItem> items)
         {
-            return new(MenuSectionId.CreateUnique(), name, description, items);
+            return new(MenuSectionId.Create(), name, description, items);
         }
 
         public string Name { get; }

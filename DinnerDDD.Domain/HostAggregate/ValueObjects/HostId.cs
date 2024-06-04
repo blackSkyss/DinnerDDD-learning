@@ -11,7 +11,7 @@ namespace DinnerDDD.Domain.Host.ValueObjects
             Value = value;
         }
 
-        public static HostId CreateUnique()
+        public static HostId Create()
         {
             return new(Guid.NewGuid());
         }

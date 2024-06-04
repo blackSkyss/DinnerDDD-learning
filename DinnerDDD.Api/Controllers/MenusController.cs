@@ -1,5 +1,6 @@
 ﻿using DinnerDDD.Application.Menus.Commands.CreateMenu;
 using DinnerDDD.Contracts.Menus;
+using DinnerDDD.Domain.Common.Errors;
 using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -23,10 +24,12 @@ namespace DinnerDDD.Api.Controllers
             CreateMenuRequest request,
             string hostId)
         {
-            var command = _mapper.Map<CreateMenuCommand>(request);
+            var command = _mapper.Map<CreateMenuCommand>((request, hostId));
             var createMenuResult = await _sender.Send(command);
 
-            return Ok(request);
+            return createMenuResult.Match(
+                menu => Ok(_mapper.Map<MenuResponse>(menu)),
+                errors => Problem(errors));
         }
     }
 }
