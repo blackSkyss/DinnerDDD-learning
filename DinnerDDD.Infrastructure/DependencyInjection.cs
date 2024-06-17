@@ -3,8 +3,10 @@ using DinnerDDD.Application.Common.Interfaces.Persistence;
 using DinnerDDD.Application.Common.Interfaces.Services;
 using DinnerDDD.Infrastructure.Authentication;
 using DinnerDDD.Infrastructure.Persistence;
+using DinnerDDD.Infrastructure.Persistence.Repositories;
 using DinnerDDD.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -40,6 +42,9 @@ namespace DinnerDDD.Application
         {
             var JwtSettings = new JwtSettings();
             configuration.Bind(JwtSettings.SectionName, JwtSettings);
+
+            services.AddDbContext<DinnerDDDContext>(options => 
+                                                    options.UseSqlServer());
 
             services.AddSingleton(Options.Create(JwtSettings));
             services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();

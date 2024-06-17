@@ -13,7 +13,7 @@ namespace DinnerDDD.Domain.MenuAggregate.Entities
 
         public static MenuItem Create(string name, string description)
         {
-            return new(MenuItemId.Create(), name, description);
+            return new(MenuItemId.CreateUnique(), name, description);
         }
 
         public string Name { get; }

@@ -20,7 +20,7 @@ namespace DinnerDDD.Domain.MenuAggregate.Entities
 
         public static MenuSection Create(string name, string description, List<MenuItem> items)
         {
-            return new(MenuSectionId.Create(), name, description, items);
+            return new(MenuSectionId.CreateUnique(), name, description, items);
         }
 
         public string Name { get; }

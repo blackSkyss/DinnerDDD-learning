@@ -1,7 +1,7 @@
 ﻿using DinnerDDD.Application.Common.Interfaces.Persistence;
 using DinnerDDD.Domain.User;
 
-namespace DinnerDDD.Infrastructure.Persistence
+namespace DinnerDDD.Infrastructure.Persistence.Repositories
 {
     public class UserRepository : IUserRepository
     {

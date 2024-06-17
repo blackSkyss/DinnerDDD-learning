@@ -47,7 +47,7 @@ namespace DinnerDDD.Domain.Menu
             string description,
             List<MenuSection> sections)
         {
-            return new(MenuId.Create(),
+            return new(MenuId.CreateUnique(),
                        hostId,
                        name,
                        description,

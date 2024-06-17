@@ -11,9 +11,15 @@ namespace DinnerDDD.Domain.Menu.ValueObjects
             Value = value;
         }
 
-        public static MenuItemId Create()
+        public static MenuItemId CreateUnique()
         {
             return new(Guid.NewGuid());
+        }
+
+
+        public static MenuItemId Create(Guid value)
+        {
+            return new MenuItemId(value);
         }
 
         public override IEnumerable<object> GetEqualityComponents()

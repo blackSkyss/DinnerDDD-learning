@@ -20,7 +20,7 @@ namespace DinnerDDD.Application.Menus.Commands.CreateMenu
         {
             await Task.CompletedTask;
             var menu = Menu.Create(
-                hostId: HostId.Create(),
+                hostId: HostId.CreateUnique(),
                 name: request.Name,
                 description: request.Description,
                 sections: request.Sections.ConvertAll(sections => MenuSection.Create(
