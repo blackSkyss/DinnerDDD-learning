@@ -44,7 +44,7 @@ namespace DinnerDDD.Application
             configuration.Bind(JwtSettings.SectionName, JwtSettings);
 
             services.AddDbContext<DinnerDDDContext>(options => 
-                                                    options.UseSqlServer());
+                                                    options.UseSqlServer("Server=localhost;Database=DinnerDDD;User Id=sa;Password=1234567890;TrustServerCertificate=true"));
 
             services.AddSingleton(Options.Create(JwtSettings));
             services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();

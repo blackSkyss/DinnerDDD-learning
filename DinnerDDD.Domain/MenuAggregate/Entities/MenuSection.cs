@@ -23,9 +23,16 @@ namespace DinnerDDD.Domain.MenuAggregate.Entities
             return new(MenuSectionId.CreateUnique(), name, description, items);
         }
 
-        public string Name { get; }
-        public string Description { get; }
+        public string Name { get; private set; }
+        public string Description { get; private set; }
         public IReadOnlyList<MenuItem> Items => _items.AsReadOnly();
+
+#pragma warning disable CS8618
+        protected MenuSection()
+        {
+
+        }
+#pragma warning restore CS8618
 
     }
 }

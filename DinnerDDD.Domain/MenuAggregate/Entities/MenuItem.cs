@@ -16,7 +16,14 @@ namespace DinnerDDD.Domain.MenuAggregate.Entities
             return new(MenuItemId.CreateUnique(), name, description);
         }
 
-        public string Name { get; }
-        public string Description { get; }
+        public string Name { get; private set; }
+        public string Description { get; private set; }
+
+#pragma warning disable CS8618
+        protected MenuItem()
+        {
+
+        }
+#pragma warning restore CS8618
     }
 }
