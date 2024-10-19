@@ -1,16 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿namespace DinnerDDD.Api.Controllers;
 
-namespace DinnerDDD.Api.Controllers
+[Route("dinner")]
+public class DinnerController : ApiController
 {
-    [Route("dinner")]
-    public class DinnerController : ApiController
+    [HttpGet]
+    public IActionResult ListDinner()
     {
-        public DinnerController() { }
-
-        [HttpGet]
-        public IActionResult ListDinner()
-        {
-            return Ok(Array.Empty<string>());
-        }
+        return Ok(Array.Empty<string>());
     }
 }

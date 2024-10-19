@@ -2,49 +2,45 @@
 using DinnerDDD.Application.Common.Interfaces.Authentication;
 using DinnerDDD.Application.Common.Interfaces.Persistence;
 using DinnerDDD.Domain.Common.Errors;
-using DinnerDDD.Domain.User;
+using DinnerDDD.Domain.UserAggregate;
 using ErrorOr;
 using MediatR;
 
-namespace DinnerDDD.Application.Authentication.Commands.Register
+namespace DinnerDDD.Application.Authentication.Commands.Register;
+
+public class RegisterCommandHandler :
+    IRequestHandler<RegisterCommand, ErrorOr<AuthenticationResult>>
 {
-    public class RegisterCommandHandler :
-        IRequestHandler<RegisterCommand, ErrorOr<AuthenticationResult>>
+    private readonly IJwtTokenGenerator _jwtTokenGenerator;
+    private readonly IUserRepository _userRepository;
+
+    public RegisterCommandHandler(
+        IUserRepository userRepository,
+        IJwtTokenGenerator jwtTokenGenerator)
     {
+        _userRepository = userRepository;
+        _jwtTokenGenerator = jwtTokenGenerator;
+    }
 
-        private readonly IJwtTokenGenerator _jwtTokenGenerator;
-        private readonly IUserRepository _userRepository;
+    public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command,
+        CancellationToken cancellationToken)
+    {
+        await Task.CompletedTask;
 
-        public RegisterCommandHandler(
-            IUserRepository userRepository,
-            IJwtTokenGenerator jwtTokenGenerator)
+        if (_userRepository.GetUserByEmail(command.Email) is not null) return Errors.User.DuplicateEmail;
+
+        var user = new User
         {
-            _userRepository = userRepository;
-            _jwtTokenGenerator = jwtTokenGenerator;
-        }
+            FirstName = command.FirstName,
+            LastName = command.LastName,
+            Email = command.Email,
+            Password = command.Password
+        };
 
-        public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
-        {
-            await Task.CompletedTask;
+        _userRepository.Add(user);
 
-            if (_userRepository.GetUserByEmail(command.Email) is not null)
-            {
-                return Errors.User.DuplicateEmail;
-            }
+        var token = _jwtTokenGenerator.GenerateToken(user);
 
-            var user = new User
-            {
-                FirstName = command.FirstName,
-                LastName = command.LastName,
-                Email = command.Email,
-                Password = command.Password
-            };
-
-            _userRepository.Add(user);
-
-            var token = _jwtTokenGenerator.GenerateToken(user);
-
-            return new AuthenticationResult(user, token);
-        }
+        return new AuthenticationResult(user, token);
     }
 }

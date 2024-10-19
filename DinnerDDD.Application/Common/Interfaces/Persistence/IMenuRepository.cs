@@ -1,9 +1,8 @@
-﻿using DinnerDDD.Domain.Menu;
+﻿using DinnerDDD.Domain.MenuAggregate;
 
-namespace DinnerDDD.Application.Common.Interfaces.Persistence
+namespace DinnerDDD.Application.Common.Interfaces.Persistence;
+
+public interface IMenuRepository
 {
-    public interface IMenuRepository
-    {
-        void Add(Menu menu);
-    }
+    void Add(Menu menu);
 }

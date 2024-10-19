@@ -1,13 +1,13 @@
 ﻿using DinnerDDD.Domain.Common.Models;
 
-namespace DinnerDDD.Domain.Common.ValueObjects
+namespace DinnerDDD.Domain.Common.ValueObjects;
+
+public class Rating : ValueObject
 {
-    public class Rating : ValueObject
+    public int Value { get; set; }
+
+    public override IEnumerable<object> GetEqualityComponents()
     {
-        public int Value { get; set; }
-        public override IEnumerable<object> GetEqualityComponents()
-        {
-             yield return Value;
-        }
+        yield return Value;
     }
 }

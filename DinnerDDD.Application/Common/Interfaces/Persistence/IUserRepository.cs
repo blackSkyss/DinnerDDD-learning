@@ -1,11 +1,10 @@
-﻿using DinnerDDD.Domain.User;
+﻿using DinnerDDD.Domain.UserAggregate;
 
-namespace DinnerDDD.Application.Common.Interfaces.Persistence
+namespace DinnerDDD.Application.Common.Interfaces.Persistence;
+
+public interface IUserRepository
 {
-    public interface IUserRepository
-    {
-       User? GetUserByEmail(string email);
-      
-       void Add(User user);
-    }
+    User? GetUserByEmail(string email);
+
+    void Add(User user);
 }

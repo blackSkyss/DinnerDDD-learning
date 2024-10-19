@@ -1,21 +1,13 @@
 ﻿using DinnerDDD.Application.Common.Interfaces.Persistence;
-using DinnerDDD.Domain.Menu;
+using DinnerDDD.Domain.MenuAggregate;
 
-namespace DinnerDDD.Infrastructure.Persistence.Repositories
+namespace DinnerDDD.Infrastructure.Persistence.Repositories;
+
+public class MenuRepository(DinnerDDDContext context) : IMenuRepository
 {
-    public class MenuRepository : IMenuRepository
+    public void Add(Menu menu)
     {
-        private readonly DinnerDDDContext _context;
-
-        public MenuRepository(DinnerDDDContext context)
-        {
-            _context = context;
-        }
-
-        public void Add(Menu menu)
-        {
-            _context.Add(menu);
-            _context.SaveChanges();
-        }
+        context.Add(menu);
+        context.SaveChanges();
     }
 }

@@ -1,9 +1,8 @@
-﻿using DinnerDDD.Domain.User;
+﻿using DinnerDDD.Domain.UserAggregate;
 
-namespace DinnerDDD.Application.Common.Interfaces.Authentication
+namespace DinnerDDD.Application.Common.Interfaces.Authentication;
+
+public interface IJwtTokenGenerator
 {
-    public interface IJwtTokenGenerator
-    {
-        string GenerateToken(User user);
-    }
+    string GenerateToken(User user);
 }

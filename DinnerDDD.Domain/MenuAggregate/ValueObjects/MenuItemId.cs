@@ -1,30 +1,29 @@
 ﻿using DinnerDDD.Domain.Common.Models;
 
-namespace DinnerDDD.Domain.Menu.ValueObjects
+namespace DinnerDDD.Domain.MenuAggregate.ValueObjects;
+
+public sealed class MenuItemId : ValueObject
 {
-    public sealed class MenuItemId : ValueObject
+    private MenuItemId(Guid value)
     {
-        public Guid Value { get; }
+        Value = value;
+    }
 
-        private MenuItemId(Guid value)
-        {
-            Value = value;
-        }
+    public Guid Value { get; }
 
-        public static MenuItemId CreateUnique()
-        {
-            return new(Guid.NewGuid());
-        }
+    public static MenuItemId CreateUnique()
+    {
+        return new MenuItemId(Guid.NewGuid());
+    }
 
 
-        public static MenuItemId Create(Guid value)
-        {
-            return new MenuItemId(value);
-        }
+    public static MenuItemId Create(Guid value)
+    {
+        return new MenuItemId(value);
+    }
 
-        public override IEnumerable<object> GetEqualityComponents()
-        {
-            yield return Value;
-        }
+    public override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return Value;
     }
 }

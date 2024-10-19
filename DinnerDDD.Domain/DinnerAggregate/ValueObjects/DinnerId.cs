@@ -1,24 +1,23 @@
 ﻿using DinnerDDD.Domain.Common.Models;
 
-namespace DinnerDDD.Domain.Dinner.ValueObjects
+namespace DinnerDDD.Domain.DinnerAggregate.ValueObjects;
+
+public sealed class DinnerId : ValueObject
 {
-    public sealed class DinnerId : ValueObject
+    private DinnerId(Guid value)
     {
-        public Guid Value { get; }
+        Value = value;
+    }
 
-        private DinnerId(Guid value)
-        {
-            Value = value;
-        }
+    public Guid Value { get; }
 
-        public static DinnerId Create()
-        {
-            return new(Guid.NewGuid());
-        }
+    public static DinnerId Create()
+    {
+        return new DinnerId(Guid.NewGuid());
+    }
 
-        public override IEnumerable<object> GetEqualityComponents()
-        {
-            yield return Value;
-        }
+    public override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return Value;
     }
 }

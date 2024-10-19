@@ -6,18 +6,18 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-    "name": "Yummy Menu",
-    "description": "A menu with yummy food",
-    "sections": [
+  "name": "Yummy Menu",
+  "description": "A menu with yummy food",
+  "sections": [
+    {
+      "name": "Appetizers",
+      "description": "Starters",
+      "items": [
         {
-            "name": "Appetizers",
-            "description": "Starters",
-            "items": [
-                {
-                    "name": "Fried Pickles",
-                    "description": "Deep fried pickles"
-                }
-            ]
+          "name": "Fried Pickles",
+          "description": "Deep fried pickles"
         }
-    ]
+      ]
+    }
+  ]
 }

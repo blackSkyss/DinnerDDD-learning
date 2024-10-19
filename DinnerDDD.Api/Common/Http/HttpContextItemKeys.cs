@@ -1,7 +1,6 @@
-﻿namespace DinnerDDD.Api.Common.Http
+﻿namespace DinnerDDD.Api.Common.Http;
+
+public static class HttpContextItemKeys
 {
-    public static class HttpContextItemKeys
-    {
-        public const string Errors = "Errors";
-    }
+    public const string Errors = "Errors";
 }

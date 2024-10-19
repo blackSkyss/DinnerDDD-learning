@@ -1,16 +1,15 @@
-﻿namespace DinnerDDD.Contracts.Menus
-{
-    public record CreateMenuRequest(
-        string Name,
-        string Description,
-        List<MenuSectionRequest> Sections);
+﻿namespace DinnerDDD.Contracts.Menus;
 
-    public record MenuSectionRequest(
-        string Name,
-        string Description,
-        List<MenuItemRequest> Items);
+public record CreateMenuRequest(
+    string Name,
+    string Description,
+    List<MenuSectionRequest> Sections);
 
-    public record MenuItemRequest(
-        string Name,
-        string Description);
-}
+public record MenuSectionRequest(
+    string Name,
+    string Description,
+    List<MenuItemRequest> Items);
+
+public record MenuItemRequest(
+    string Name,
+    string Description);
